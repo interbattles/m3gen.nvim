@@ -3,7 +3,7 @@
   <h4 align="center">material 3 (material you) color generation tool now in neovim!</h4>
   <h5 align="center">not possible without <a href="https://github.com/roobert/palette.nvim">palette.nvim</a></h5>
   <h6 align="center">many thanks 🎉</h5>
-  <h6 align="center">(nearly completely inspired ~~stolen~~ 😼)</h6>
+  <h6 align="center">(nearly completely inspired <s>stolen</s> 😼)</h6>
 </p>
 
 ## default config:

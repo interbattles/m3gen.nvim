@@ -1,125 +1,35 @@
-# matugen.nvim
+<p align="center">
+  <h2 align="center">🎨 m3gen.nvim</h2>
+  <h4 align="center">material 3 (material you) color generation tool now in neovim!</h4>
+  <h5 align="center">not possible without <a href="https://github.com/roobert/palette.nvim">palette.nvim</a></h5>
+  <h6 align="center">many thanks 🎉</h5>
+  <h6 align="center">(nearly completely inspired ~~stolen~~ 😼)</h6>
+</p>
 
-matugen.nvim is a modification of
-[pywal16.nvim](https://github.com/uZer/pywal16.nvim), aiming to support
-a transparent background, 16 colors palettes, and more plugins.
-
-It is made to work with [matugen](https://github.com/InioX/matugen),
-which is a program capable of generating/supporting colorschemes similarly to (the now archived) pywal and pywal16
-
-## Screenshots
-
-(from upstream, but outputs should be similar/the same)
-![01](./.screenshots/01.png)
-![02](./.screenshots/02.png)
-
-## External Plugin Support
-
-- BetterWhitespace
-- BufferLine
-- Coc
-- Diff
-- Feline
-- GitGutter
-- Gitsigns
-- Ident-BlankLine
-- Illuminate
-- LSP
-- LSP saga
-- LSP trouble
-- Lualine
-- Neogit
-- NeoVim (checkhealth...)
-- NvimTree
-- Nvim-scrollbar
-- Telescope
-- Tree-sitter
-
-## Installation
-
-You can install this plugin with packer:
-
+## default config:
 ```lua
-use { 'interbatles/matugen.nvim', as = 'matugen' }
-```
+local config = {
+  colors = {
+    override = true, -- overrides generated colors with colors of choice to achieve more consistent coloring
+    source_color = '#343d37', -- main color extracted to create scheme (from image, standalone, etc.)
 
-Or with vim-plug:
-
-```vim
-Plug 'interbatles/matugen.nvim', { 'as': 'matugen' }
-```
-
-## Active theme
-
-To active the theme, call this in your neovim config:
-
-```lua
-local matugen = require('matugen')
-
-matugen.setup()
-```
-
-Or with vim script:
-
-```vim
-colorscheme matugen
-```
-
-> It will set automatically the `vim.opt.termguicolors` to true
-
-## Activating lualine theme
-
-Place this in your lualine config:
-
-```lua
-local lualine = require('lualine')
-
-lualine.setup {
-  options = {
-    theme = 'matugen-nvim',
+    surface = '#0f1511', -- background
+    container = '#1b211d', --objects "on top of" background
+    primary = '#8fd5af', -- main color
+    secondary = '#b4ccbc', -- alternate color
+    tertiary = '#a4cddd', -- alternate color
   },
+
+  source_palettes = {
+    main = 'dark', -- dark, light, pastel
+    accent = 'pastel', -- dark, light, pastel
+    state = 'pastel', -- dark, light, pastel
+  },
+
+  italics = true,
+  transparent_background = false, -- may cause some issues
+
+  caching = true,
+  cache_dir = vim.fn.stdpath('cache') .. '/m3gen',
 }
 ```
-
-## Using the core to get the colors
-
-If you want to get the colors into a lua dictionary:
-
-```lua
-local matugen_core = require('matugen.core')
-local colors = matugen_core.get_colors()
-```
-
-## How it works
-
-```vim
-" Special
-let background = "#110914"
-let foreground = "#e3cfe2"
-let cursor     = "#e3cfe2"
-
-" Colors
-let color0  = "#110914"
-let color1  = "#A378B6"
-let color2  = "#B687AD"
-let color3  = "#D9A2AF"
-let color4  = "#F8DDAD"
-let color5  = "#AD90CF"
-let color6  = "#D2ACD6"
-let color7  = "#e3cfe2"
-let color8  = "#9e909e"
-let color9  = "#A378B6"
-let color10 = "#B687AD"
-let color11 = "#D9A2AF"
-let color12 = "#F8DDAD"
-let color13 = "#AD90CF"
-let color14 = "#D2ACD6"
-let color15 = "#e3cfe2"
-```
-
-The theme only reads it files variables and then create a colors dictionary to
-create a theme based in it's colors
-
-## Enjoy
-
-If you like this work you can give it a star :)

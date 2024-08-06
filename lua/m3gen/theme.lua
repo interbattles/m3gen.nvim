@@ -17,7 +17,7 @@ local secondary = config.get('colors')['secondary'] or '#b4ccbc'
 local tertiary = config.get('colors')['tertiary'] or '#a4cddd'
 
 local generated_main = generator.generate_colors(base_main, source_color)
-local generated_accent = generator.generate_accents(base_accent, source_color)
+-- local generated_accent = generator.generate_accents(base_accent, source_color)
 -- local generated_state = generator.generate_colors(base_state, source_color)
 
 local extend_main = {
@@ -30,7 +30,7 @@ local extend_main = {
 
 -- select the main, state, and accent colors based off users config options..
 M.main = config.get('colors')['override'] and vim.tbl_extend('force', generated_main, extend_main) or generated_main
-M.accent = generated_accent
+M.accent = base_accent
 M.state = base_state
 
 -- same for other options..
